@@ -1,0 +1,7 @@
+.chart-container {
+  width: 600px; /* Adjust the width as necessary */
+  height: 600px; /* Adjust the height as necessary */
+  margin: 20px auto; /* Center the chart on the page and add some margin */
+  border: 1px solid #ccc; /* Add a border around the chart for visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for better focus */
+}
