@@ -1,16 +1,21 @@
 "use client";
 import { dispose, init } from "klinecharts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./CandlestickChart.css";
-
-// export default () => {
 export default function CandlestickChartX() {
-  useEffect(() => {
-    // initialize the chart
-    const chart = init("chart");
+  const [chart, setChart] = useState(null);
 
-    // add data to the chart
-    chart.applyNewData([
+  useEffect(() => {
+    // Check if chart already exists and clean it up before creating a new one
+    if (chart) {
+      dispose("chart");
+    }
+
+    const initializedChart = init("chart");
+    setChart(initializedChart);
+
+    // Initial data setup
+    initializedChart.applyNewData([
       {
         close: 4976.16,
         high: 4977.99,
@@ -98,7 +103,29 @@ export default function CandlestickChartX() {
       dispose("chart");
     };
   }, []);
+  const updateChartData = () => {
+    if (chart) {
+      chart.applyNewData([
+        {
+          close: 4960,
+          high: 4970,
+          low: 4950,
+          open: 4965,
+          timestamp: new Date().getTime(),
+          volume: 150,
+        },
+        // add more new data
+      ]);
+    }
+  };
 
   //   return <div id="chart" style={{ width: 600, height: 600 }} />;
-  return <div id="chart" className="chart-container" />;
+  return (
+    <div>
+      <div id="chart" className="chart-container" />
+      <button onClick={updateChartData} className="update-button">
+        Update Chart
+      </button>
+    </div>
+  );
 }
