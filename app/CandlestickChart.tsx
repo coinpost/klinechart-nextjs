@@ -1,6 +1,7 @@
 "use client";
 import { dispose, init } from "klinecharts";
 import { useEffect, useState } from "react";
+import "./CandlestickChart.css";
 
 interface Chart {
   applyNewData(data: ChartData[]): void;
