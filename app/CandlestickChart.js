@@ -2,6 +2,7 @@
 import { dispose, init } from "klinecharts";
 import { useEffect, useState } from "react";
 import "./CandlestickChart.css";
+
 export default function CandlestickChartX() {
   const [chart, setChart] = useState(null);
 
